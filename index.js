@@ -3,17 +3,19 @@ var express = require('express');
 
 //instance of app
 var myapp = express();
+var path = require('path');
 
-myapp.set('xyz','test');
+myapp.use(express.static(
+	path.join(__dirname,'resources')
+	));
+
 myapp.set('views',__dirname+'/views');
 myapp.set('view engine','ejs');
 
-myapp.get('xyz')
-
 // console.log(process.env.PORT);
- myapp.get('/',function(req,res)
+ myapp.get('/admin/login',function(req,res)
  {
- 	res.render('index')
+ 	res.render('backend/login');
  })
 
 //   myapp.get('/initial',function(req,res)
